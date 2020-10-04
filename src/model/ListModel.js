@@ -1,7 +1,9 @@
 export default {
-  async getData(dataURL, fn) {
-    const res = await fetch(dataURL);
-    const { body } = await res.json();
-    return body;
+  async getData(dataURL) {
+    const res = await fetch("http://192.168.100.101:8080/list");
+    if (!res.ok) {
+      throw new Error("error");
+    }
+    return await res.json();
   },
 }
