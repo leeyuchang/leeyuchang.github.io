@@ -47,10 +47,10 @@ export default {
     return await res.text();
   },
 
-  async removeById(url) {
+  async delete(url) {
     const res = await fetch(url, {
-      method: 'delete',
       mode: 'cors',
+      method: 'delete',
       headers: {
         'Authorization': 'Bearer ' + localStorage.getItem('jwttoken'),
       },

@@ -26,16 +26,18 @@ export default {
       .on('@click', data => this.onPageNum(data.detail));
 
     LinkView.setup(document.getElementById('linkview'))
-      .on('@edit', data => this.onClickEditBtn(data.detail))
-      .on('@del', data => this.onDel(data.detail));
+      .on('@edit', data => this.onEditBtn(data.detail)) // rendering view : retrive data
+      .on('@del', data => this.onDelBtn(data.detail)); //  rendering view : delete  data
 
     EditView.setup(document.getElementById('editView'))
       .on('@submit', data => this.onSubmitEdit(data.detail));
     
+    DelView.setup(document.getElementById('delView'))
+      .on('@confirm', data => this.onConfirmDel(data.detail)); 
+    
     LoginView.setup(document.getElementById('loginView'))
       .on('@login', data => this.onLogin(data.detail));
 
-    DelView.setup(document.getElementById('delView')); // TODO ???
 
     document.getElementById('signupBtn').addEventListener('click', () => SignupView.render());
     document.getElementById('addBtn').addEventListener('click', () => AddView.render());
@@ -44,7 +46,7 @@ export default {
     this.onPageNum(0);
   },
 
-  onClickEditBtn(id) {
+  onEditBtn(id) {
     LinkModel.getOne(`http://localhost:8080/links/${id}`).then(data => EditView.render(data));
   },
 
@@ -56,18 +58,20 @@ export default {
     });
   },
 
-  onDel(data) {
-    if (window.confirm(`Delete this file? \n\r ${data.title} `)) {
-      LinkModel.removeById(`http://localhost:8080/links/${data.id}`).then(result => {
-        log(TAG, result);
+  onConfirmDel(id) {
+    log(TAG, 'onConfirmDel:', id);
+    LinkModel.delete(`http://localhost:8080/links/${id}`).then(result => {
         this.onPageNum(0);
       });
-    }
+  },
+
+  onDelBtn(data) { 
+    DelView.render(data);
   },
 
   onPageNum(page) { // TODO FIX ME API ADDRESS
     LinkModel.get('http://localhost:8080/list?', page).then(data => {
-      LinkView.render(data.content);
+      LinkView.render(data);
       PageView.render(data);
     });
   },

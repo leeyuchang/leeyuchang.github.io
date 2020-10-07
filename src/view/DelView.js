@@ -18,20 +18,19 @@ DelView.render = function (data) {
      
     <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Confirm</h4>
+        <h4 class="modal-title">Delete</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
       <!-- Modal body -->
       <div class="modal-body">
-        Delete this ? <br>
-        ${data.title}
+      <strong>${data.title}</strong>
       </div>
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Confirm</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-danger delete" data-dismiss="modal" data-id="${data.id}">Delete</button>
+        <button class="btn btn-secondary cancel" data-dismiss="modal" >Cancel</button>
       </div>
     </div>
   </div>
@@ -41,7 +40,10 @@ DelView.render = function (data) {
 }
 
 DelView.eventBinding = function () {
-  this.on('click', function (e) { 
+  this.on('click', function ({ target }) { 
+    if (target.classList.contains('delete')) {
+      DelView.emit('@confirm', target.dataset.id);
+    } 
   });
 }
 

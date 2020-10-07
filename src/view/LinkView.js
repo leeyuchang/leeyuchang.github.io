@@ -14,9 +14,9 @@ LinkView.MSG = {
   NO_ITEM: 'There is no item( please check internet line )',
 }
 
-LinkView.render = function (data = []) {
+LinkView.render = function ({content} = []) {
   this.el.innerHTML = '';
-  this.el.innerHTML = data.length ? this.getHtml(data) : this.MSG.NO_ITEM;
+  this.el.innerHTML = content.length ? this.getHtml(content) : this.MSG.NO_ITEM;
 }
 
 LinkView.getHtml = function(data) {
@@ -42,7 +42,7 @@ LinkView.getHtml = function(data) {
 }
 
 LinkView.eventBinding = function () {
-  this.on('click', function ({ target}) { 
+  this.on('click', function ({target}) { 
     
     if (target.classList.contains('del-btn')) {
       log(TAG,'[del-btn]', target.dataset.id, target.dataset.title);
