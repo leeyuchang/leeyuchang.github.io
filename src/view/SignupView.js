@@ -1,6 +1,6 @@
 import View from './View.js'
 
-const TAG = 'SignupView';
+const TAG = '[SignupView]';
 
 const SignupView = Object.create(View);
 
@@ -11,6 +11,7 @@ SignupView.setup = function (el) {
 }
 
 SignupView.render = function () {
+  log(TAG, 'SignupView.render');
   this.el.innerHTML =
   `
   <div class="modal fade" id="signupModal">
@@ -55,6 +56,7 @@ SignupView.render = function () {
     </div>
   </div>
   `;
+  $('#signupModal').modal('toggle');
 }
 
 SignupView.bindingEvents = function () {

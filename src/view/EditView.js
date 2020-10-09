@@ -61,7 +61,6 @@ EditView.eventBinding = function () {
     const url = e.target.url.value;
     const createDate = e.target.createDate.value;
     const data = { id, title, url, createDate};
-    log(TAG, data);
     EditView.emit('@submit', data);
   });
 }

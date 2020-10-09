@@ -11,6 +11,7 @@ AddView.setup = function (el) {
 }
 
 AddView.render = function () {
+  log(TAG, 'AddView.render')
   this.el.innerHTML =
     `
     <div class="modal fade" id="addModal">
@@ -46,6 +47,7 @@ AddView.render = function () {
       </div>
     </div>
     `;
+  $('#addModal').modal('toggle');
 }
 
 AddView.eventBinding = function () {

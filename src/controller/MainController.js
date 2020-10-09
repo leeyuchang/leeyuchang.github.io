@@ -10,102 +10,102 @@ import EditView from '../view/EditView.js';
 import DelView from '../view/DelView.js';
 import LoginView from '../view/LoginView.js';
 
+import {BASE_URL, JWT} from '../config.js';
+
 const TAG = '[MainController]'
 
 export default {
-
   init() {
-
     AddView.setup(document.getElementById('addView'))
-      .on('@submit', data => this.onRegist({ detail }));
+      .on('@submit', data => this.onRegiest(data.detail));
 
     SignupView.setup(document.getElementById('signupView'))
-      .on('@submit', data => this.onSignup({ detail }));
+      .on('@submit', data => this.onSignup(data.detail));
 
     PageView.setup(document.getElementById('pageView'))
-      .on('@click', data => this.onPageNum({ detail }));
+      .on('@click', data => this.onPageNum(data.detail));
 
-    LinkView.setup(document.getElementById('linkview'))
-      .on('@edit', data => this.onEditBtn({ detail })) // rendering view : retrive data
-        .on('@del', data => this.onDelBtn({ detail })); //  rendering view : delete  data
+    LinkView.setup(document.getElementById('linkView'))
+      .on('@edit', data => this.onEditBtn(data.detail))
+      .on('@del', data => this.onDelBtn(data.detail));
 
     EditView.setup(document.getElementById('editView'))
-      .on('@submit', data => this.onSubmitEdit({ detail }));
-    
+      .on('@submit', data => this.onSubmitEdit(data.detail));
+
     DelView.setup(document.getElementById('delView'))
-      .on('@confirm', data => this.onConfirmDel({ detail })); 
-    
+      .on('@confirm', data => this.onConfirmDel(data.detail));
+
     LoginView.setup(document.getElementById('loginView'))
-      .on('@login', data => this.onLogin({ detail }));
+      .on('@login', data => this.onLogin(data.detail));
 
-
-    document.getElementById('signupBtn').addEventListener('click', () => SignupView.render());
     document.getElementById('addBtn').addEventListener('click', () => AddView.render());
     document.getElementById('loginBtn').addEventListener('click', () => LoginView.render());
+    document.getElementById('signupBtn').addEventListener('click', () => SignupView.render());
 
-    this.onPageNum(0);
+    this.onPageNum(localStorage.getItem('page') | 0);
   },
 
   onEditBtn(id) {
     LinkModel
-      .getOne(`http://localhost:8080/links/${id}`)
-      .then(EditView.render);
+      .findOne(`${BASE_URL}/links/${id}`)
+      .then(data=>EditView.render(data));
   },
 
   onSubmitEdit(data) {
     LinkModel
-      .put(`http://localhost:8080/links/${data.id}`, data)
+      .put(`${BASE_URL}/links/${data.id}`, data)
       .then(() => {
         $('#editModal').modal('toggle');
-        this.onPageNum(0);
+        this.onPageNum(localStorage.getItem('page'));
       });
   },
 
   onConfirmDel(id) {
     LinkModel
-      .delete(`http://localhost:8080/links/${id}`)
-      .then(result => {this.onPageNum(0);});
+      .delete(`${BASE_URL}/links/${id}`)
+      .then(result => this.onPageNum(localStorage.getItem('page')));
   },
 
-  onDelBtn(data) { 
+  onDelBtn(data) {
     DelView.render(data);
   },
 
   onPageNum(page) {
+    localStorage.setItem('page', page);
     LinkModel
-      .get(`http://localhost:8080/list?`, page)
+      .findAll(`${BASE_URL}/list?`, page)
       .then(data => {
         LinkView.render(data);
         PageView.render(data);
       });
   },
 
-  onRegist(data) {
+  onRegiest(data) {
     LinkModel
-      .post(`http://localhost:8080/links`, data)
+      .post(`${BASE_URL}/links`, data)
       .then(data => {
         $('#addModal').modal('toggle');
-        alert('Regist Completed')
+        alert('Regiest Completed')
       });
   },
 
   onSignup(data) {
     SignupModel
-      .post(`http://localhost:8080/signup`, data)
+      .post(`${BASE_URL}/signup`, data)
       .then(data => {
-        localStorage.setItem('jwttoken', data.jwttoken);
-        $('#signupModal').modal('toogle');
+        localStorage.setItem(JWT, data.jwttoken);
+        $('#signupModal').modal('toggle');
         alert('Signup Completed');
       });
   },
 
   onLogin(data) {
     LoginModel
-      .post(`http://localhost:8080/login`, data)
+      .post(`${BASE_URL}/login`, data)
       .then((data) => {
         $('#loginModal').modal('toggle');
         log(TAG, 'onLogin ', data);
-        localStorage.setItem('jwttoken', data.jwttoken);
+        localStorage.setItem(JWT, data.jwttoken);
       });
   },
 }
