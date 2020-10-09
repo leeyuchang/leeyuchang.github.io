@@ -1,6 +1,7 @@
 export default {
   async post(url, data) {
     const res = await fetch(url, {
+      mode: 'cors',
       method: 'POST',
       headers: {
         'content-type': 'application/json',
