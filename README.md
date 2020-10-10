@@ -22,3 +22,23 @@ Back end side <br>
  ・Spring Security <br>
  ・JWT (Json Web Token) <br>
  ・MongoDB <br>
+
+
+## AWS에 올릴때 참고
+[Websites for you and your projects.]  <br>
+https://pages.github.com/  <br>
+
+[[REST API 실습] 4. Springboot 프로젝트 AWS EC2 인스턴스에 배포]  <br>
+https://wickies.tistory.com/102  <br>
+
+[AWS https hosting]  <br>
+https://dev.classmethod.jp/articles/aws-web-server-https-for-beginner/ <br>
+
+[우분투 jar 파일 서비스 등록(Ubuntu service jar file)]  <br>
+https://lts0606.tistory.com/225  <br>
+
+[aws Application Load Balancer]  <br>
+https://lts0606.tistory.com/225  <br>
+
+[rsync で ssh 接続するオプション]  <br>
+https://www-creators.com/archives/1543  <br>
