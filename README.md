@@ -3,7 +3,7 @@
 This is vanilla script with ES6+ <br>
 I came across probleams such as  <br>
   'javaScript #fetch pre-flight blocking'  <br>
-  'http https mixed content blocking '. <br>
+  'Github pages http https mixed content blocking '. <br>
   'module access blocking on Java 9 above' <br>
 It was a good chance to learn the solution of the probleams. <br>
 
@@ -18,7 +18,7 @@ Front end side <br>
  ・jQuery <br>
 
 Back end side <br>
- ・Spring Boot <br>
+ ・Spring Boot (Java 11)<br>
  ・Spring Security <br>
  ・JWT (Json Web Token) <br>
  ・MongoDB <br>
