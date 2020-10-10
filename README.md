@@ -1,13 +1,16 @@
-# leeyuchang.github.io
+# Simple URL collection application.
 
 This is vanilla script with ES6+ <br>
-I'm trying to install the server on AWS. <br>
-but, there are some probleam 'http' 'https'. <br>
+I came across probleams such as  <br>
+  'javaScript #fetch pre-flight blocking'  <br>
+  'http https mixed content blocking '. <br>
+  'module access blocking on Java 9 above' <br>
+It was a good chance to learn the solution of the probleams. <br>
 
 AWS<br>
  ・EC2 <br>
- ・ALB (for https)<br>
- ・Route 53 (for https)<br>
+ ・ALB (for https hosting)<br>
+ ・Route 53 (for https hosting)<br>
 
 Front end side <br>
  ・JavaScript ES6+ with MVC pattern<br>
@@ -19,5 +22,3 @@ Back end side <br>
  ・Spring Security <br>
  ・JWT (Json Web Token) <br>
  ・MongoDB <br>
- 
- 
