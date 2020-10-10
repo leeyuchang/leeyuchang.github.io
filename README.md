@@ -24,7 +24,7 @@ Back end side <br>
  ・MongoDB <br>
 
 
-## AWS에 올릴때 참고
+## References
 [Websites for you and your projects.]  <br>
 https://pages.github.com/  <br>
 
