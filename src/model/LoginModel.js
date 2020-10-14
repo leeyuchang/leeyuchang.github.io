@@ -8,7 +8,10 @@ export default {
       },
       body: JSON.stringify(data),
     });
-    if (!res.ok) throw new Error(res.status);
+    if (!res.ok) {
+      let msg = await res.text();
+      throw new Error(msg);
+    }
     return res.json();
   }
 }

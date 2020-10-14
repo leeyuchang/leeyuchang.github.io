@@ -9,9 +9,11 @@ export default {
       body: JSON.stringify(data),
     });
 
-    if (!res.ok) throw new Error('error');
-
-    let result = res.json();
-    return result;
+    if (!res.ok) {
+      const err = await res.text();
+      log('SignupModel', err);
+      throw new Error(err);
+    }
+    return res.json();
   }
 }

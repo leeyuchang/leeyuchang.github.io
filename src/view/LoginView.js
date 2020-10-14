@@ -1,19 +1,19 @@
 import View from './View.js';
 
-const TAG = '[LoginForm]';
+const TAG = '[LoginView]';
 
-const LoginForm = Object.create(View);
+const LoginView = Object.create(View);
 
-LoginForm.setup = function (el) {
+LoginView.setup = function (el) {
   this.init(el);
   this.eventBinding();
   return this;
 }
 
-LoginForm.render = function () {
+LoginView.render = function () {
   this.el.innerHTML = `
   <div class="modal fade" id="loginModal">
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog modal-sm">
       <div class="modal-content">
 
         <!-- Modal Header -->
@@ -35,6 +35,7 @@ LoginForm.render = function () {
             </div>
             <button type="submit" class="btn btn-success">Login</button>
           </form>
+          <div class="invalid-feedback"></div>
         </div>
 
         <!-- Modal footer -->
@@ -48,14 +49,19 @@ LoginForm.render = function () {
   $('#loginModal').modal('toggle');
 }
 
-LoginForm.eventBinding = function () {
+LoginView.eventBinding = function () {
   this.on('submit', function (e) { 
     e.preventDefault();
+    e.stopPropagation();
     const username = e.target.username.value;
     const password = e.target.password.value;
     const data = { username, password };
-    LoginForm.emit('@login', data);
+    LoginView.emit('@login', data);
    });
 }
 
-export default LoginForm;
+LoginView.modalHide = function () {
+  $('#loginModal').modal('toggle');
+}
+
+export default LoginView;

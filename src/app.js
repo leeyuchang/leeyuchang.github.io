@@ -1,3 +1,3 @@
-import MainContoller from './controller/MainController.js';
+import MainController from './controller/MainController.js';
 
-document.addEventListener('DOMContentLoaded', () => MainContoller.init());
+document.addEventListener('DOMContentLoaded', () => MainController.init());

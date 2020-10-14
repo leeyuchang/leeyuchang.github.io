@@ -24,7 +24,7 @@ DelView.render = function (data) {
 
       <!-- Modal body -->
       <div class="modal-body">
-      <strong>${data.title}</strong>
+      ${data.title}
       </div>
 
       <!-- Modal footer -->

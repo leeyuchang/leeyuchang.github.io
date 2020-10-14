@@ -24,7 +24,7 @@ export default {
         'Authorization': 'Bearer ' + localStorage.getItem(JWT),
       },
     });
-    if (!res.ok) throw new Error('error');
+    if (!res.ok) throw new Error(await res.text());
     return await res.json();
   },
 
@@ -64,7 +64,7 @@ export default {
         'Authorization': 'Bearer ' + localStorage.getItem(JWT),
       },
     });
-    if (!res.ok) throw new Error('error');
+    if (!res.ok) throw new Error(await res.text());
     return await res.text();
   },
 }

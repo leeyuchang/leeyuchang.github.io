@@ -9,6 +9,7 @@ import SignupView from '../view/SignupView.js';
 import EditView from '../view/EditView.js';
 import DelView from '../view/DelView.js';
 import LoginView from '../view/LoginView.js';
+import MsgView from '../view/MsgView.js';
 
 import {BASE_URL, JWT} from '../config.js';
 
@@ -38,6 +39,8 @@ export default {
     LoginView.setup(document.getElementById('loginView'))
       .on('@login', data => this.onLogin(data.detail));
 
+    MsgView.setup(document.getElementById('msgView'));
+
     document.getElementById('addBtn').addEventListener('click', () => AddView.render());
     document.getElementById('loginBtn').addEventListener('click', () => LoginView.render());
     document.getElementById('signupBtn').addEventListener('click', () => SignupView.render());
@@ -47,8 +50,13 @@ export default {
 
   onEditBtn(id) {
     LinkModel
-      .findOne(`${BASE_URL}/links/${id}`)
-      .then(data=>EditView.render(data));
+        .findOne(`${BASE_URL}/links/${id}`)
+        .then(data=>EditView.render(data))
+        .catch(e => {
+            const content = e.message;
+            const body = JSON.parse(content);
+            MsgView.render({message:body.message, details:''});
+        });
   },
 
   onSubmitEdit(data) {
@@ -62,8 +70,13 @@ export default {
 
   onConfirmDel(id) {
     LinkModel
-      .delete(`${BASE_URL}/links/${id}`)
-      .then(result => this.onPageNum(localStorage.getItem('page')));
+        .delete(`${BASE_URL}/links/${id}`)
+        .then(result => this.onPageNum(localStorage.getItem('page')))
+        .catch(e => {
+            const content = e.message;
+            const body = JSON.parse(content);
+            MsgView.render({message:body.message, details:''});
+        });
   },
 
   onDelBtn(data) {
@@ -90,12 +103,19 @@ export default {
   },
 
   onSignup(data) {
+      let sent  = data;
     SignupModel
       .post(`${BASE_URL}/signup`, data)
       .then(data => {
         localStorage.setItem(JWT, data.jwttoken);
-        $('#signupModal').modal('toggle');
-        alert('Signup Completed');
+        SignupView.modalHide();
+        MsgView.render({message:'Signup Completed',details:''})
+      }).catch(e => {
+          const content = e.message;
+          const body = JSON.parse(content);
+          const message = body.message;
+          const details = JSON.parse(body.details);
+          SignupView.serverValidation(details);
       });
   },
 
@@ -103,9 +123,13 @@ export default {
     LoginModel
       .post(`${BASE_URL}/login`, data)
       .then((data) => {
-        $('#loginModal').modal('toggle');
-        log(TAG, 'onLogin ', data);
         localStorage.setItem(JWT, data.jwttoken);
+        LoginView.modalHide();
+        MsgView.render({message:'Login Completed',details:''})
+      }).catch(e => {
+          const content = e.message;
+          const message = content.message;
+        MsgView.render({message, details:''});
       });
   },
 }

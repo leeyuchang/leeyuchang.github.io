@@ -7,6 +7,14 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -23,6 +31,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -33,13 +42,17 @@
       <recent name="C:\practices\github_pages_vanilla_js\leeyuchang.github.io\js" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JavaScript Debug.index.html">
     <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/leeyuchang.github.io/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="test.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/leeyuchang.github.io/test.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JavaScript Debug.index.html" />
+        <item itemvalue="JavaScript Debug.test.html" />
       </list>
     </recent_temporary>
   </component>
@@ -53,7 +66,12 @@
       <updated>1602125096362</updated>
       <workItem from="1602125097455" duration="11551000" />
       <workItem from="1602231808721" duration="3089000" />
-      <workItem from="1602236734403" duration="5308000" />
+      <workItem from="1602236734403" duration="5989000" />
+      <workItem from="1602288314380" duration="29865000" />
+      <workItem from="1602338922217" duration="2567000" />
+      <workItem from="1602509020332" duration="3252000" />
+      <workItem from="1602588920897" duration="23033000" />
+      <workItem from="1602641464603" duration="5176000" />
     </task>
     <servers />
   </component>
@@ -65,9 +83,17 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="500" y="165" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.834@0.0.1536.834" timestamp="1602136022552" />
-    <state x="477" y="150" width="582" height="534" key="find.popup" timestamp="1602232514668">
+    <state x="588" y="332" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1602594395342">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="477" y="150" width="582" height="534" key="find.popup/0.0.1536.834@0.0.1536.834" timestamp="1602232514668" />
+    <state x="588" y="332" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.834@0.0.1536.834" timestamp="1602594395342" />
+    <state x="477" y="150" width="582" height="624" key="find.popup" timestamp="1602595030052">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="477" y="150" width="582" height="624" key="find.popup/0.0.1536.834@0.0.1536.834" timestamp="1602595030052" />
+    <state x="426" y="190" key="run.anything.popup" timestamp="1602643342894">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="426" y="190" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1602643342894" />
   </component>
 </project>
